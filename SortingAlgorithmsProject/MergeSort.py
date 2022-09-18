@@ -40,10 +40,9 @@ def Merge_List(left_list, right_list):
     print("MERGE L:", left_list, "     R:", right_list)
     left_list_length = len(left_list)
     right_list_length = len(right_list)
-    merged_list = [None] * (left_list_length + right_list_length) #initialized with "none" to allow us to visualize it being filled with values later.
+    merged_list = []
     left_index = 0
     right_index = 0
-    merge_index = 0
 
     """
     This while loop will compare the left list and the right list to get 
@@ -51,31 +50,26 @@ def Merge_List(left_list, right_list):
     until either left or right list have been fully compared. 
     """
     while left_index < left_list_length and right_index < right_list_length:
-        print("Merged List: ", merged_list, "     L-Index:", left_index, "     R-Index", right_index)
+        print("Comparing L-Index:", left_index, "     R-Index", right_index, end="     ")
         if left_list[left_index] <= right_list[right_index]:
-            merged_list[merge_index] = left_list[left_index]
+            merged_list.append(left_list[left_index])
             left_index += 1
         else:
-            merged_list[merge_index] = right_list[right_index]
+            merged_list.append(right_list[right_index])
             right_index += 1
-        merge_index += 1
+        print("Merged List after compare: ", merged_list)
 
     """
-    The purpose of the remaining while loops is to insert the remaining values
-    in the left and/or right lists that have not been added to the merged list. 
-    With the left list being added first since the left values will always be less 
-    than the right values
+    Insert the remaining values in the left and/or right lists that have not been 
+    added to the merged list. With the left list being added first since the left 
+    values will always be less than the right values
     """
-    while left_index < left_list_length:
-        merged_list[merge_index] = left_list[left_index]
-        left_index += 1
-        merge_index += 1
-        print("Appending remaining values from left list: ", merged_list)
+    if left_index < left_list_length:
+        print("Appending remaining values from left list: ", left_list[left_index:])
+        merged_list.extend(left_list[left_index:])
 
-    while right_index < right_list_length:
-        merged_list[merge_index] = right_list[right_index]
-        right_index += 1
-        merge_index += 1
-        print("Appending remaining values from right list: ", merged_list)
+    if right_index < right_list_length:
+        print("Appending remaining values from right list: ", right_list[right_index:])
+        merged_list.extend(right_list[right_index:])
 
     return merged_list
