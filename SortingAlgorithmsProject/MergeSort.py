@@ -11,14 +11,14 @@ def Recursive_Merge_Sort(list_to_sort):
     :return: sorted list
     """
     if len(list_to_sort) <= 1:
-        print("Returning smallest list of 1: ", list_to_sort)
+        #print("Returning smallest list of 1: ", list_to_sort)
         return list_to_sort #breaks the recursion as the list can no longer be split
 
     mid_index = math.floor(len(list_to_sort)/2) #gets the half of the length rounded down
     left_list = list_to_sort[:mid_index]
     right_list = list_to_sort[mid_index:]
-    print("Unsorted: ", list_to_sort)
-    print("L: ", left_list, "          R: ", right_list)
+    #print("Unsorted: ", list_to_sort)
+    #print("L: ", left_list, "          R: ", right_list)
     left_list = Recursive_Merge_Sort(left_list) #pass on left list to be split even further
     right_list = Recursive_Merge_Sort(right_list) #pass on right list to be split even further
 
@@ -28,7 +28,7 @@ def Recursive_Merge_Sort(list_to_sort):
     """
 
     list_to_sort = Merge_List(left_list, right_list)
-    print("Sorted: ", list_to_sort)
+    #print("Sorted: ", list_to_sort)
     return list_to_sort
 
 def Merge_List(left_list, right_list):
@@ -37,7 +37,7 @@ def Merge_List(left_list, right_list):
     :param right_list: contains the right half of the list to be merged
     :return: merged and sorted list from the left and right list
     """
-    print("MERGE L:", left_list, "     R:", right_list)
+    #print("MERGE L:", left_list, "     R:", right_list)
     left_list_length = len(left_list)
     right_list_length = len(right_list)
     merged_list = []
@@ -50,14 +50,14 @@ def Merge_List(left_list, right_list):
     until either left or right list have been fully compared. 
     """
     while left_index < left_list_length and right_index < right_list_length:
-        print("Comparing L-Index:", left_index, "     R-Index", right_index, end="     ")
+        #print("Comparing L-Index:", left_index, "     R-Index", right_index, end="     ")
         if left_list[left_index] <= right_list[right_index]:
             merged_list.append(left_list[left_index])
             left_index += 1
         else:
             merged_list.append(right_list[right_index])
             right_index += 1
-        print("Merged List after compare: ", merged_list)
+        #print("Merged List after compare: ", merged_list)
 
     """
     Insert the remaining values in the left and/or right lists that have not been 
@@ -65,11 +65,11 @@ def Merge_List(left_list, right_list):
     values will always be less than the right values
     """
     if left_index < left_list_length:
-        print("Appending remaining values from left list: ", left_list[left_index:])
+        #print("Appending remaining values from left list: ", left_list[left_index:])
         merged_list.extend(left_list[left_index:])
 
     if right_index < right_list_length:
-        print("Appending remaining values from right list: ", right_list[right_index:])
+        #print("Appending remaining values from right list: ", right_list[right_index:])
         merged_list.extend(right_list[right_index:])
 
     return merged_list
