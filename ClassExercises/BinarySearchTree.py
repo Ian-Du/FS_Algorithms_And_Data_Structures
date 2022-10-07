@@ -65,7 +65,7 @@ def Binary_Search_NonRec(original_list, query_number):
         else:
             is_found = True
 
-    #if the list has been cut all the way to 0 then the query_number was not found.
+    #if the list has been cut all the way to 0 and the query_number was not found.
     if is_found:
         return original_list[mid_index]
     else:
